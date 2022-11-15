@@ -1,0 +1,36 @@
+curl -s -d "q=926" -X POST https://www.angio.net/newpi/piquery | jq-win64 -r
+{
+  "et": 41118,
+  "r": [
+    {
+      "k": "926",
+      "st": 0,
+      "status": "found",
+      "p": 5,
+      "db": "1415",
+      "da": "53589793238462643383",
+      "c": 199775
+    }
+  ],
+  "status": "OK"
+}
+
+
+curl -s -d "q=0478015127" -X POST https://www.angio.net/newpi/piquery | jq-win64 -r '.r[]|.status, .p'
+notfound
+0
+
+
+curl -s -d "q=926" -X POST https://www.angio.net/newpi/piquery | jq-win64 -r '.r[]|.status, .p'
+found
+5
+
+
+./curl2
+Positie=5
+
+
+python curl1.py
+478015127 was not found
+
+
